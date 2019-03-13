@@ -6,15 +6,9 @@ const containers = document.querySelector(".card-columns");
 
 // instantiating classes
 const show = new UIDisplay;
-<<<<<<< HEAD
 const gif = new glyph;
 
 // hiding spinner on document load
-=======
-const glyph = new glyphs;
-
-// hide spinner on document loaded
->>>>>>> d8e2dcf9a6830a413d7e1d4ca2ac9b8b0b19d71c
 $("#spinner").hide();
 
 // adding button event listener
@@ -38,11 +32,7 @@ button.addEventListener('click', e => {
             $("#spinner").hide();
 
             // get fetch api result
-<<<<<<< HEAD
             gif.get(term).then(
-=======
-            glyph.get(term).then(
->>>>>>> d8e2dcf9a6830a413d7e1d4ca2ac9b8b0b19d71c
                 data => {
                     let rest = data.result.data;
 
