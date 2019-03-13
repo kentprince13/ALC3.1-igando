@@ -3,7 +3,7 @@ class UIDisplay {
             this.gif_height = 150,
                 this.gif_width = 334
         }
-        // create gif element
+        // creating gif elements
     gifElement(gif_url, gif_alt, mainContainer) {
 
             //create div tag

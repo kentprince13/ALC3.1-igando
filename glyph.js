@@ -8,7 +8,7 @@ const containers = document.querySelector(".card-columns");
 const show = new UIDisplay;
 const gif = new glyph;
 
-// hide spinner on document loaded
+// hiding spinner on document load
 $("#spinner").hide();
 
 // adding button event listener
