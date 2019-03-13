@@ -1,69 +1,68 @@
 //  query selectors
-const button =  document.querySelector("#butt")
-let searchterm = document.querySelector("#searchbox");
+const button = document.querySelector("#butt")
+let searchTerm = document.querySelector("#searchBox");
 const containers = document.querySelector(".card-columns");
 //const spinner = document.querySelector("#spinner");
 
-// instatiating classes
-const show = new UIdisplay;
-const giph = new giphy;
+// instantiating classes
+const show = new UIDisplay;
+const gif = new glyph;
 
-// hide spinner on dcument loaded
+// hide spinner on document loaded
 $("#spinner").hide();
 
 // adding button event listener
- button.addEventListener('click',e => {
-     e.preventDefault;
+button.addEventListener('click', e => {
+    e.preventDefault;
 
-     // show spinner when button is clicked
-     $("#spinner").show();
-    
-     //getting input value
-     const term = searchterm.value
-    
-     // checking if serchterm isn't null and to check if Gif is already populated
-     if( term!== "" || containers.childElementCount>1){
-    
+    // show spinner when button is clicked
+    $("#spinner").show();
+
+    //getting input value
+    const term = searchTerm.value
+
+    // checking if searchTerm isn't null and to check if Gif is already populated
+    if (term !== "" || containers.childElementCount > 1) {
+
         // if gif is present, clear the container
-        containers.innerHTML = " " ;
+        containers.innerHTML = " ";
 
         // set spinner timeout
-     setTimeout(() => {
-        $("#spinner").hide();
+        setTimeout(() => {
+            $("#spinner").hide();
 
-        // get fetch api result
-        giph.get(term).then(
-            data => {
-                let rest = data.result.data;
+            // get fetch api result
+            gif.get(term).then(
+                data => {
+                    let rest = data.result.data;
 
-                 // iterate the results
-                rest.forEach(element => {
+                    // iterate the results
+                    rest.forEach(element => {
 
-                    //set gif alt and src
-                    let gifURL = element.images.original.url
-                    let gifAlt = element.source_tld
+                        //set gif alt and src
+                        let gifURL = element.images.original.url
+                        let gifAlt = element.source_tld
 
-                    // display each gif to UI
-                    show.gifElement(gifURL,gifAlt,containers)
-                    
-                });
-            }
-        ) 
-     }, 2500);
+                        // display each gif to UI
+                        show.gifElement(gifURL, gifAlt, containers)
 
-     // clear input value
-     searchterm.value = "";
+                    });
+                }
+            )
+        }, 2500);
+
+        // clear input value
+        searchTerm.value = "";
     }
-     // if input is empty,
-     // hide spinner, display error message and reload the page
-     else{
+    // if input is empty,
+    // hide spinner, display error message and reload the page
+    else {
         $("#spinner").hide();
-         show.showErrormessage("Enter Anything...")
-         setTimeout(() => {
+        show.showErrorMessage("Enter Anything...")
+        setTimeout(() => {
             $("#lead").hide()
             location.reload();
-        },2000);
+        }, 2000);
     }
 
- })
-
+})
